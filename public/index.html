@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Time</title>
+    <script>
+        async function fetchTime() {
+            const response = await fetch('/time');
+            const data = await response.json();
+            document.getElementById('time').textContent = data.time;
+        }
+        setInterval(fetchTime, 1000); // Update every second
+    </script>
+</head>
+<body onload="fetchTime()">
+    <h1>Current Time:</h1>
+    <p id="time">Loading...</p>
+</body>
+</html>
